@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module MembershipTracker
   class Application < Rails::Application
+    config.api_only = true
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.2
 
@@ -23,5 +25,8 @@ module MembershipTracker
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    Rails.application.credentials[Rails.env.to_sym].map do |key, value|
+      ENV[key.to_s] = value.to_s
+    end
   end
 end
