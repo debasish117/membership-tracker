@@ -1,0 +1,7 @@
+<h1>Members Off Track Notification</h1>
+<p>The following members are off track:</p>
+<ul>
+  <% @members.each do |member| %>
+    <li><%= member.first_name %> <%= member.last_name %> (Plan: <%= member.plan.start_date %> to <%= member.plan.end_date %>)</li>
+  <% end %>
+</ul>
